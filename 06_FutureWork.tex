@@ -1,0 +1,64 @@
+\chapter{Future Work and Conclusion}
+
+The remaining research which will be conducted during the course of this project can be described as four work packages, each with an associate research question and submission for publication. Each explores an avenue to further examines how sensing can be used to enable the gripper motion while grasping moving objects. Appendix \ref{Gantt1} - \ref{GanttBreakdownmisc} shows a more detailed outline of how the remaining time in the project will be used to complete these work packages. These work packages are:
+\begin{itemize}
+    \item Neural network trained using reinforcement learning to map tactile sensor stimilius to gripper motion while grasping moving objects.
+    \item The role vision sensor placement plays in grasping moving objects
+    \item A proposal for a visuotactile strategy for grasping moving objects
+    \item Remote tactile sensing as a strategy to inform grasping motion
+\end{itemize}
+
+\section{Neural Networks and Reinforcement Learning} \label{RL}
+
+%% Justify research, connect it to existing research
+
+This work would build on the previous submission to IROS2019 where it was concluded that tactile sensing could positively contribute to the motion of a gripper as it grasped a moving object. In that research, a simple rule based strategy was used to take advantage of tactile sensors. It was identified that this was not an optimisation of the potential contribution of tactile sensors and merely a proof of concept. To further this, research would be conducted with the aim of optimising the contribution of tactile sensors using a reinforcement learning approach.
+
+% What is the research
+Tactile sensing has already been shown to positively contribute to the motion of the gripper while grasping a moving object. However, there is no obvious way in which to couple actuation to sensor stimulus so as to optimise the contribution of tactile sensing. A deep neural network can be trained to couple sensor data to gripper movement, using reinforcement learning. The performance of the system controlled by a neural network can then be compared to systems with the same sensing capabilities but with a simple rule based strategy, i.e. the system outlined in the submission to IROS2019, and to a system which relies solely on an estimated interception position and time. This research hypothesises that a neural network trained using reinforcement learning can optimise the contribution of tactile sensing when grasping a moving object, outperforming existing systems with similar levels of sensing.
+
+% How am I going to achieve this.
+To enable training, through reinforcement learning, grasping attempts will be conducted, both in simulation and in the real world. Real world training will use an adapted version of the experimental rig outlined previously, while gazebo will be used for simulation. Training will start in simulation, since it is easier to achieve a high number of training cycles. This will allow quick iteration toward a suitable network architecture, hyper-parameters, etc. Training will then move to real world training, this will prevent over-fitting of the network to the idealised system in simulation. It is unclear as of yet if transfer learning can be used to take the trained network from simulation and retrain it in the real world or if it would be better to train from the beginning on the real world system. Further research into industry best practice, prior research and transfer learning theory is required before making that decision. The computational hardware used will be either an ESP32 or a Raspberry Pi. Both are suitable platforms with an ESP32 being the more appropriate option for lightweight, low-power, computation at-the-edge robotics and Raspberry Pi being more computationally powerful and therefore potentially a simpler way to address the research question. The complexity of the required neural network architecture and the number of required training epochs will determine which platform is used.
+
+% Methodology
+When fully implemented a methodology very similar to that outlined in chapter \ref{IROS2019} will be employed. Data about the grasping success rate will be collected for each system under various conditions, i.e. combinations of spacial offsets and speeds. 
+
+\section{Vision Sensor Placement}\label{Vision}
+
+%% Justify research, connect it to existing research
+As discussed in previous chapters, vision is a fundamental part of any general purpose gripping solution. The problems associated with relying solely on vision has also been discussed. Vision is typically computationally expensive and therefore latency often renders it unsuitable for time critical applications. It is also vulnerable to occlusion and changes in lighting conditions. Until this point assumptions were made that a vision based system would place the actuator within grasping range of the target object, and the focus of research has been to increase the size of that grasping range, both temporally and spatially, and to reduce the reliance on a vision system. Any contributions which vision might make to the grasping motion itself has been largely ignored. This will now be examined in more detail.
+
+% What is the research
+This research explores the contribution image sensors have toward the grasping motion when the target object is dynamic, and specifically strives to understand the role camera placement plays in this. To investigate, a moving object will be grasped both in simulation and in real world experiments. Existing literature will be used to identify common problems with camera placement on-robot, i.e. occlusion, latency, lighting conditions, etc. Simulation will be used to explore how these issues can be tackled using camera placement, most likely in wrist, fingers and other arm. A real world system, with a short-list of camera placements (identified from simulation), will then be created and tested. Performance of systems using difference combinations of camera placements can then be compared.
+
+% How am I going to achieve this.
+Real world testing will be conducted on an adapted version of the existing testing apparatus, described in Chapter \ref{IROS2019} while testing in simulation will use Gazebo and the model developed for the previous reinforcement learning research discussed in section \ref{RL}. The cameras used will be the PiCam for the Raspberry Pi or the ESP32Cam. For similar reasons to those outlined in section \ref{RL} the decision of which platform has not been made yet. The ESP32 being more suitable for robotics, low power, lightweight, at the edge, applications but the Raspberry Pi being more computationally powerful. It will therefore depend on which algorithms and methods prove effective during simulated testing and how suitable each platform is to each approach. Implementation will rely heavily on available algorithms, source code, etc such as OpenCV and the ESP-IDF, which will also play a role in choosing the appropriate platform.
+
+% Methodology
+Echoing the experiments previously conducted, this exploration of the role sensor placement plays in grasping moving objects will culminate in real world testing. Image sensors will inform a grasping motion on a gripper and the performance of the gripper in terms of grasping success rate will be used to address the research question.
+
+\section{ViseoTactile Grasping Strategy}
+
+%% Justify research, connect it to existing research
+Until this point, research has investigated independently how both tactile and vision sensing can be used to inform the motion of robotic fingers whilst grasping a dynamic object. Having investigated and optimised the contribution of both sensing mechanisms, this research aims to present a combined visuotactile system which can outperform the current state of the art as described in prior literature. 
+
+% What is the research
+The system should be robust to object shape, size and stiffness as well as velocity, angle of incidence, and spin. The tactile enabled reactive control strategy, powered by a neural network and reinforcement learning, outlined in section \ref{RL} , will be coupled with the learning's from the vision sensor placement research, outlined in section \ref{Vision}, to create a robotic gripper which employs a sensor-informed grasping motion. The grasp success rate for each combination of variables will be reported.
+
+% How am I going to achieve this.
+This work package relies heavily upon outcomes from the previous two. The realisation of a neural network to optimise the contribution of tactile sensing and a system with optimally implemented, in-hand cameras, is essential to realise the complete visuotactile system. Furthermore, a more complex testing apparatus will be required to allow the systems ability to handle objects of different shapes, spins, etc, to be tested. The gripper itself however will remain an adapted version of the existing gripper. Being a two-fingered pincer gripper, its simplicity allows for a robust, repeatable testing procedure and is sufficient to address the research question since the same principles could be extrapolated for more complex grippers.
+
+
+\section{Remote Tactile Sensing}
+
+%% Justify research, connect it to existing research
+There has been little exploration of the potential contributions of alternative sensing mechanisms to the problem of grasping moving objects. Existing approaches rely heavily on image sensing. A reactive grasping stragety, enable by tactile sensing, has previously been proposed, see chapter \ref{IROS2019}. However a fundamental limitation of tactile sensing for this application was identified during that research. Traditional tactile sensing requires physical contact between object and gripper before a reaction to the sensor stimulus is possible. Since the optimum time to initiate a grasp is before contact between gripper and target object, a grasp reactive to tactile sensing alone has an inherent temporal offset from optimum which cannot be overcome. This research aims to address this barrier.
+
+% What is the research
+An investigate is conducted into alternative sensors which can provide accurate location information about the object, similar to that provided by tactile sensors, before contact with the gripper. Such a sensor would enable a grasping motion reactive in real-time to sensor data about object position. During this research the sensor, or several sensors using different mechanisms, would be created and implemented onto the existing gripper. Testing would be conducted on these systems to determine the effectiveness of this strategy, and to compare the different approaches to creating such a sensor.
+
+% How am I going to achieve this.
+Inspiration for appropriate sensors would be largely taken from prior literature where there are already examples of such sensors and details of how they have previously been created \cite{FingertipEmitterReceiverMovingObject, FingertipEmitterReceiverMovingObjectII}. The gripper and testing apparatus used would be very similar to that described in chapter \ref{IROS2019} since the research question is fundamentally the same but with a different sensor. The grasping strategy may be the simple rule based one previously described, since this is sufficient to address the research question, but neural networks and reinforcement would also be an option depending on how much overhead and development time would be deemed to be involved in such an approach. 
+
+\section{Conclusion}
+This document has outlined in detail this research project. Describing progress and findings to date as well as specifically outlining future research questions and a plan to address them. Through examination of the literature, determining how sensing can be used to inform a better, more informed grasping motion was identified as an under-explored and valuable area of research to pursue. To-date in this project, experiments have been conducted to examine the contribution that tactile sensing plays in informing a grippers motion when grasping a moving object. It was found that real-time tactile sensor data can be used to react to errors/offsets from optimum in the interception position and time between gripper and object and improve the grasp success rate over a range of variables. Future work, outlined above, aims to optimise this contribution aswell as examine other types of sensing, such as image sensing and remote tactile sensing. Finally, this project aims to present a holistic, visuo-tactile grasping strategy and an associated gripper which is capable of grasping moving objects, despite large errors in the estimated interception point, where sensor contribution is optimised.

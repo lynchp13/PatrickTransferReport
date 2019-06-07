@@ -12,14 +12,16 @@
 %% file should be \input (not \include 'd) from cover.tex.
 
 % should be ~500 words
-% introduction
-A robot's ability to grasp objects vastly increases its potential, allowing it to interact and manipulate its environment. 
-% motivation/aims/ research qs
-Despite extensive research, autonomously grasping a moving object remains a very challenging problem; this document presents research which aims to tackle this. 
-% methods
-Three different areas are explored to achieve this, a predictive model is developed to estimate where the object will be at a given point in time, enabling a robotic system to intercept it. Robotic hardware (grippers and manipulators) are examined to determine the factors which might effect its ability to grasp a moving object, specifically the contribution of a compliant skin, hand geometry and actuation. Finally different types of sensing are experimented with and their suitability and potential contribution to such a grasping system is determined, there is particular focus on tactile and image sensing with an examination of the control strategies which are enabled when a system has image and/or tactile sensing. 
-% results
-It was found that a predictive model can be used to calculate an appropriate intercept point with a dynamic object, however such an approach is more reliable when the model is informed by information about the object and what its expected behaviour is. The physical embodiment of the gripper has a huge effect on the success rate of grasps and design features like compliment skin can massively increase the chances of a successful grasp. Finally tactile sensing can be used to enable a smarter grasping strategy while visual servoing techniques prove effective for achieving the interception point with the grasper.
+
+%% Background
+Grasping moving objects is a challenging problem in the field of robotics. Traditional approaches are computationally expensive, over reliant on vision-based systems and often require an existing sensor infrastructure in the robot's environment. These make existing techniques unsuitable for implementation on mobile robotic platforms. The potential contribution of alternative strategies, in particular of other types of sensing, remains under-explored. 
+%% Aims
+The aim of this project is to investigate the role which sensing plays in the ability of a robot to grasp an object in motion. It is hypothesised that a sensor-heavy approach, where multiple sensing modalities are combined, can enable a robust grasping strategy, suited to implementation on a mobile robot.
+%% Method
+In order to test this hypothesis, the topic was broken into several research questions and addressed individually. In order to enable testing, a two-finger pincer gripper was designed and manufactured. To date, tests were performed on this pincer gripper with and without tactile sensing and their performances compared. A similar methodology will be employed in the future to investigate other sensing mechanisms, including vision and remote tactile.
+%% Results and Conclusion
+Tests have found that tactile feedback provided in real-time enabled the gripper to rapidly adapt to the moving object. This resulted in higher observed grasp robustness, in particular when the object's trajectory was offset from the center of the gripper. These findings indicate that tactile sensing can play an important role in informing the gripper motion when grasping moving objects and motivates further research on how the contribution of tactile sensing can be optimised and what other types of sensing might be utilised in creating a sensor-informed grasping motion for autonomous grasping of moving objects.
+
 % conclusion, comment, contribution
 % how have you added to field?
 

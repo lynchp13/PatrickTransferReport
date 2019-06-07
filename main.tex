@@ -1,4 +1,4 @@
-% -*- Mode:TeX -*-
+ % -*- Mode:TeX -*-
 
 %% IMPORTANT: The official thesis specifications are available at:
 %%            http://libraries.mit.edu/archives/thesis-specs/
@@ -28,12 +28,15 @@
 \documentclass[12pt,twoside]{mitthesis}
 \usepackage{lgrind}
 \usepackage{graphicx}
+\usepackage{url}
 %% These have been added at the request of the MIT Libraries, because
 %% some PDF conversions mess up the ligatures.  -LB, 1/22/2014
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
 \usepackage{subcaption}
 \usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{wasysym}
 
 \pagestyle{plain}
 
@@ -57,15 +60,13 @@
 % \include{signature}
 \pagestyle{plain}
 \include{contents}
-\include{chap1}
-\include{chap2}
-\include{chap3}
-\include{chap4}
-\include{chap5}
-\include{chap6}
-\appendix
-\include{appa}
-\include{appb}
+\include{01_Introduction}
+\include{02_LitReview}
+\include{03_GripperDesign}
+\include{04_TactileSensing}
+\include{05_TactileReactiveStragety}
+\include{06_FutureWork}
+\include{07_Appendix}
 \include{biblio}
 \end{document}
 

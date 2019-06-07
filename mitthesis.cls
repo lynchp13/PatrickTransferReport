@@ -376,7 +376,7 @@
 
 % \and is used inside the \degree argument to separate two degrees
 \def\and{\gdef\@degreeword{degrees} \par and \par}
-\def\@degreeword{degree}
+\def\@degreeword{confirmation process}
 
 % The copyright notice stuff is a tremendous mess.
 %
@@ -456,17 +456,15 @@ by\par
 \@prevdegrees
 \par
 \choosecase{Submitted to the} \choosecase{\@department} \\
-\choosecase{in partial fulfillment of the requirements for the}
+\choosecase{in fulfillment of the requirements of the}
 \choosecase{\@degreeword} 
-\choosecase{of}
+\choosecase{for a}
 \par
 \choosecase{\@degree}
 \par
-at the
+at 
 \par\MIT\par
 \@degreemonth\ \@degreeyear
-\par
-\@copyrightnotice
 \par
 \vskip 3\baselineskip
 \signature{Author}{\@department \\ \@thesisdate}
@@ -475,7 +473,7 @@ at the
 \unvbox\@titlesupervisor
 \par
 \vfill
-\signature{Accepted by}{\@chairmanname \\ \@chairmantitle}
+%\signature{Accepted by}{\@chairmanname \\ \@chairmantitle}
 \vfill
 \end{titlepage}}
 
@@ -490,7 +488,7 @@ by \\
 \def\baselinestretch{1}\@normalsize
 Submitted to the \@department \\
 on \@thesisdate, in partial fulfillment of the \\
-requirements for the \@degreeword\ of \\
+requirements for the \@degreeword\ for a \\
 \@degree
 \end{center}
 \par
@@ -518,7 +516,7 @@ requirements for the \@degreeword\ of \\
 % The \kern0pt pushes any depth into the height.  Thanks to Richard Stone.
 \def\endtitlepage{\par\kern 0pt\egroup\vss\egroup\newpage}
 
-\def\MIT{MASSACHUSETTS INSTITUTE OF TECHNOLOGY}
+\def\MIT{TRINITY COLLEGE DUBLIN}
 \def\Mit{Massachusetts Institute of Technology}
 
 \def\permission{\par\noindent{\centering
