@@ -22,25 +22,31 @@ Robots, even relatively primitive platforms, perform well in highly-structured e
 One area where this move to more unstructured and dynamic environments is particularly challenging is manipulation and grasping. Manipulation and grasping are essential functions of a general purpose robot. The ability to grasp and manipulate an object extends the robot's ability beyond sensing and navigating its environment to the ability to manipulate and interact with it's environment. In a controlled environment the problem is typically simplified by ensuring that a known object is in a known location and favourable orientation. When a robots needs to be able to effectively grasp in less structured environments this is not the case. Furthermore, the range of objects which a general purpose service robot would encounter and be expected to grasp is much larger. Finally, it is naive to assume that the objects which you will want to grasp will always be static and remain static throughout the interaction. This document outlines ongoing research which specifically examines the autonomous robotic grasping of dynamic objects.
 
 \section{Background}
-%% what is manipulation
+
 Robotic manipulation refers to a robots ability to interact with an object in its environment. It is the robotic equivalent a human using its arms and hands to interact with objects. This research is concerned  specifically with the end effector or gripper of the robot, i.e. mechanism at the end of a robotic manipulator. At a high level, robotic manipulation consists of 3 primary components, sensing, processing/planning and actuation. A wide variety of sensing manipulation and grasping strategies typically are just variations of these 3 core components. Sensing refers to how a robotic arm collects data about its environment, including the target object. Processing or planning refers to how the system analyses that sensory input and decides on an appropriate response. There are a variety of approaches to planning, ranging from reactive strategies to planning strategies, these will be discussed more later. Finally, Actuation is the physical movement of the robotic system in an attempt to achieve the goal.
 
-%% MORE FOR MY BACKGROUND SECTION
+Grasping is considered by some to be a solved problem \cite{APCObservations}, others have said that it's technology readiness level (TRL) should be considered between a 3 and a 4 \cite{KukayouBot} (TRL is a scale between 1 and 9). This disagreement about the current state of the art in grasping stems from the context in which the grasping is implemented. Grasping in structured environments is largely considered a solved problem. The type of grasping which has be deemed between a 3 and 4 technology readiness level refers to grasping on a professional service robot or a robot in a flexible cognitive manufacturing scenario. In other words robots operating in less structured environments. This is a distinction which is very important in grasping and in this project.
+
 
 \subsection{Challanges}
 
 Despite the maturity of manipulation and grasping research, there are persistent challenges which researchers have been striving to overcome for decades and are still not satisfactorily solved. The most commonly encountered include:
 \begin{itemize}
     \item Unstructured Environments \cite{Delft, Zhao}
+    
     Unstructured environments is a problem common to robotics and is mentioned above. It is particularly relevant in grasping where traditionally a complex problem has been simplified though the use of assumptions. In unstructured environments it is not effective to assume there are no obstacles between the robot and target object, or that the object is static. Creating a robotic gripper which is effective in unstructured environments is a very difficult problem.
     \item Occlusion \cite{Delft, Detectionandmapping, Zhao}
-    Traditionally grasping problems have relied heavily on vision sensing. Vision sensing enables the passive collection of large amounts of accurate data about the environment. Robotics relies heavily on vision for grasping, mostly for the same reasons which humans rely heavily on their vision. Unfortunately, vision sensing is inherently vulnerable to occlusion problems, particularly in grasping applications where the gripper itself tends to occluded any on-board sensors.
+    
+    Traditionally grasping problems have relied heavily on vision sensing. Vision sensing enables the passive collection of large amounts of accurate data about the environment. Robotics relies heavily on vision for grasping, mostly for the same reasons which humans rely heavily on their vision. Unfortunately, vision sensing is inherently vulnerable to occlusion problems, particularly in grasping applications where the gripper itself tends to occluded any on-board vision sensors. In humans, this shortcoming is overcome by using other senses.
     \item Lighting Conditions \cite{Delft, Detectionandmapping}
+    
     Sensitivity to different lighting conditions is a common problem in computer vision. A reliance on vision sensors make it a problem in robotics also. Conditions which are too bright or too dark can often cause problem during manipulation.
     \item Computation
+    
     The computational demands of a grasping task range from very simple sensing and motor control to computationally demanding computer vision and path planning algorithms. This is of particular concern on mobile platforms where computation may be a limited resource.
     \item Latency
-    Latency can pose a significant problem when conducting time critical tasks, such as grasping moving objects. Latency can be introduced at both a software and hardware level. In software there is a non trivial amount of time needed to analysis sensor data and compute an appropriate action. Similarly, when an appropriate action is determined a non-trivial amount of time is required for the robotic system to carry out that action.
+    
+    Latency can pose a significant problem when conducting time critical tasks, such as grasping moving objects. Latency can be introduced at both a software and hardware level. In software there is a non trivial amount of time needed to analysis sensor data and compute an appropriate action. Similarly, when an appropriate action is determined a non-trivial amount of time is required for the robotic system to carry out that action, for example to reach a target position.
     
     
 \end{itemize}
@@ -67,12 +73,12 @@ The primary aims of this research include:
 \item Present a grasping strategy for the control of robot fingers based on feedback from a) embedded tactile sensors b) remote tactile sensors
 \item Train a neural network to take sensor data as an input and control the grasping motion as an output
 \item Investigate the role of image sensor placement while grasping a moving object.
-\item Propose a visuotactile grasping system capable of grasping moving objects
+\item Propose a visuotactile grasping system capable of robustly grasping moving objects
 \end{itemize}
 
 % document outline
 \section{Document Outline}
-Chapter 2 will present a comprehensive outline of the existing research and associated literature relevant to this challenge and give a sense of the current state of the art. Chapter 3 will explore predictive modelling of the dynamic object. This will be done in simulation where, several different approaches can be applied to a range of situations relatively quickly. Chapter 4 will present controlled experiments and corresponding results of robot grippers ability to grasp objects, different features of the gripper design are isolated and their contribution to the grasp assessed. Chapter 5 will look at sensing, both tactile and visual. The range of possibilities of each are explored and their value assessed. Finally Chapter 6 will conclude this transfer report, summing up the finding to date and outlining future work for this research project.
+Chapter 2 will present a comprehensive outline of the existing research and associated literature relevant to this challenge and give a sense of the current state of the art. Chapter 3 will present a gripper which was designed and manufactured during this project for the purposes of addressing the aforementioned research questions. Chapter 4 will present a tactile sensor, inspired by literature and created during this project to address research questions related to tactile sensing. Chapter 5 describes controlled experiments which were conducted and their corresponding results. These explore the ability of tactile sensing to enable a reactive gripper motion for grasping moving objects. Chapter 6, supported by several important appendices, will outline the plan for the rest of this research project. Showing granularity such as week by week timeline predictions, outline of experiments, methods and equipment required and plans for publications.
 
 
 
